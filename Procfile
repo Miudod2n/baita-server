@@ -1,1 +1,1 @@
-web node baitaserver.js
+web: node baitaserver.js
