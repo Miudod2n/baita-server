@@ -1,1 +1,1 @@
-worker: node baitaserver.js
+web node baitaserver.js
