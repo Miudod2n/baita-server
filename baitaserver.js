@@ -6,7 +6,8 @@ const baitaserver = express()
 baitaserver.use(cors());
 
 baitaserver.get(':endpoint', function (req, res) {
-console.log(endponit)
+     console.log(req.params.endpoint)
+
     // Remove any trailing slash from base url
 
     res.header("Access-Control-Allow-Origin", "*");
@@ -15,7 +16,7 @@ console.log(endponit)
     
     
     var endpoint = req.params.endpoint;
-    console.log(endponit)
+    console.log(endpoint)
     endpoint = endpoint.substring(1);
     console.log(endpoint)
     axios.get(endpoint, {
