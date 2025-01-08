@@ -6,15 +6,16 @@ const baitaserver = express()
 baitaserver.use(cors());
 
 baitaserver.use(function(req, res, next) {
-      if (req.path.length > 1 && /\/$/.test(req.path)) {
-        var query = req.url.slice(req.path.length)
-        res.redirect(301, req.path.slice(0, -1) + query)
-            console.log("poopsie")
-      } else {
-            console.log(req.path);
-            console.log( req.url.slice(req.path.length));
-            console.log("pee")
-        next()
+      res.redirect(301, req.path.substring(1));
+     // if (req.path.length > 1 && /\/$/.test(req.path)) {
+     //   var query = req.url.slice(req.path.length)
+     //   res.redirect(301, req.path.slice(0, -1) + query)
+     //       console.log("poopsie")
+     // } else {
+     //       console.log(req.path);
+     //       console.log( req.url.slice(req.path.length));
+      //      console.log("pee")
+      //  next()
       }
     });
 
