@@ -5,20 +5,15 @@ import axios from "axios"
 const baitaserver = express()
 baitaserver.use(cors());
 
-baitaserver.get(':endpoint', function (req, res) {
-     console.log(req.params.endpoint)
-
-    // Remove any trailing slash from base url
+baitaserver.get(':endpoint([\\/\\w\\.-]*)', function (req, res) {
+     // Remove any trailing slash from base url
 
     res.header("Access-Control-Allow-Origin", "*");
 
     //var endpoint = req.header('Target-URL');
-    
-    
+        
     var endpoint = req.params.endpoint;
-    console.log(endpoint)
     endpoint = endpoint.substring(1);
-    console.log(endpoint)
     axios.get(endpoint, {
     }).then(async response => {
 
