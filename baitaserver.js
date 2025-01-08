@@ -16,7 +16,7 @@ baitaserver.use(function(req, res) {
      //       console.log( req.url.slice(req.path.length));
       //      console.log("pee")
       //  next()
-      }
+      
     });
 
 //baitaserver.get(':endpoint([\\w\\.-]*)', function (req, res)  {
