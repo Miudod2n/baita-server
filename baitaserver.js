@@ -11,6 +11,8 @@ baitaserver.use(function(req, res, next) {
         res.redirect(301, req.path.slice(0, -1) + query)
             console.log("poopsie")
       } else {
+            console.log(req.path);
+            console.log( req.url.slice(req.path.length);
             console.log("pee")
         next()
       }
