@@ -15,9 +15,9 @@ baitaserver.get(':endpoint([\\/\\w\\.-]*)', function (req, res) {
     
     
     var endpoint = req.params.endpoint;
-
+    console.log(endpoit)
     endpoint = endpoint.substring(1);
-    
+    console.log(endpoit)
     axios.get(endpoint, {
     }).then(async response => {
 
