@@ -5,14 +5,18 @@ import axios from "axios"
 const baitaserver = express()
 baitaserver.use(cors());
 
-baitaserver.get("/", (req, res) => {
-    res.send("Hello World!");
-     console.log(req.params.endpoint);
-});
+baitaserver.use(function(req, res, next) {
+      if (req.path.length > 1 && /\/$/.test(req.path)) {
+        var query = req.url.slice(req.path.length)
+        res.redirect(301, req.path.slice(0, -1) + query)
+      } else {
+        next()
+      }
+    });
 
 //baitaserver.get(':endpoint([\\w\\.-]*)', function (req, res)  {
 //baitaserver.get(':endpoint([\\/\\w\\.-]*)', function (req, res) {
-baitaserver.get('endpoint', function (req, res) {
+baitaserver.get('/', function (req, res) {
      // Remove any trailing slash from base url
 
     res.header("Access-Control-Allow-Origin", "*");
