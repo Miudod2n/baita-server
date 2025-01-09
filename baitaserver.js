@@ -5,7 +5,9 @@ import axios from "axios"
 const baitaserver = express()
 baitaserver.use(cors());
 
-baitaserver.get('\\S+\/$', function (req, res) {
+const yada = "https://www.wikiaves.com.br";
+
+baitaserver.get(yada+'\\S+\/$', function (req, res) {
   var endpoint = req.header('Target-URL');
   console.log(endpoint);
   return res.redirect(301, req.path.slice(0, -1) + req.url.slice(req.path.length));
