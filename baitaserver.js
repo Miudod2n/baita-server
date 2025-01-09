@@ -6,6 +6,7 @@ const baitaserver = express()
 baitaserver.use(cors());
 
 baitaserver.use(function(req, res) {
+      res.header("Access-Control-Allow-Origin", "*");
       res.redirect(301, req.path.substring(1));
      // if (req.path.length > 1 && /\/$/.test(req.path)) {
      //   var query = req.url.slice(req.path.length)
