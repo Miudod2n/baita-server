@@ -18,7 +18,7 @@ baitaserver.use(function(req, res) {
       //  next()
       
     });
-
+baitaserver.use(cors());
 //baitaserver.get(':endpoint([\\w\\.-]*)', function (req, res)  {
 //baitaserver.get(':endpoint([\\/\\w\\.-]*)', function (req, res) {
 baitaserver.get('/', function (req, res) {
