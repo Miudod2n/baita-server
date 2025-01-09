@@ -10,7 +10,7 @@ const yada = "https://www.wikiaves.com.br";
 
 
 baitaserver.get(':endpoint([\\w\\.-]*)', function (req, res)  {
-    Remove any trailing slash from base url
+    //Remove any trailing slash from base url
 
     res.header("Access-Control-Allow-Origin", "*");
 
