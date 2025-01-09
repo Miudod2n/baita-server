@@ -5,10 +5,10 @@ import axios from "axios"
 const baitaserver = express()
 baitaserver.use(cors());
 
-baitaserver.use(function(req, res) {
-      res.header("Access-Control-Allow-Origin", "*");
-      res.redirect(301, req.path.substring(1));
-      res.header("Access-Control-Allow-Origin", "*");
+//baitaserver.use(function(req, res) {
+    //  res.header("Access-Control-Allow-Origin", "*");
+   //   res.redirect(301, req.path.substring(1));
+  //    res.header("Access-Control-Allow-Origin", "*");
      // if (req.path.length > 1 && /\/$/.test(req.path)) {
      //   var query = req.url.slice(req.path.length)
      //   res.redirect(301, req.path.slice(0, -1) + query)
@@ -17,22 +17,23 @@ baitaserver.use(function(req, res) {
      //       console.log(req.path);
      //       console.log( req.url.slice(req.path.length));
       //      console.log("pee")
-      //  next()
-      
-    });
+      //  next()  
+//    });
+
 baitaserver.use(cors());
-//baitaserver.get(':endpoint([\\w\\.-]*)', function (req, res)  {
+baitaserver.get(':endpoint([\\w\\.-]*)', function (req, res)  {
 //baitaserver.get(':endpoint([\\/\\w\\.-]*)', function (req, res) {
-baitaserver.get('/', function (req, res) {
+//1baitaserver.get('/', function (req, res) {
      // Remove any trailing slash from base url
 
     res.header("Access-Control-Allow-Origin", "*");
 
     //var endpoint = req.header('Target-URL');
         
-    var endpoint = req.params.endpoint;
-    endpoint = endpoint.substring(1);
-           console.log(req.params.endpoint);
+    //var endpoint = req.params.endpoint;
+      var endpoint = req.path.substring(1);
+    //endpoint = endpoint.substring(1);
+   //        console.log(req.params.endpoint);
     console.log(endpoint);
     axios.get(endpoint, {
   
