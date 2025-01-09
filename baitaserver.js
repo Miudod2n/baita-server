@@ -10,7 +10,7 @@ baitaserver.use((req, res, next) => {
     const query = req.url.slice(req.path.length)
     const safepath = req.path.slice(0, -1).replace(/\/+/g, '/')
       console.log("poop");
-    res.redirect(301, safepath + query)
+   // res.redirect(301, safepath + query)
       axios.get(safepath + query, {
   
     }).then(async response => {
