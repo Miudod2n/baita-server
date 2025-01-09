@@ -5,37 +5,13 @@ import axios from "axios"
 const baitaserver = express()
 baitaserver.use(cors());
 
-//baitaserver.use(function(req, res) {
-    //  res.header("Access-Control-Allow-Origin", "*");
-   //   res.redirect(301, req.path.substring(1));
-  //    res.header("Access-Control-Allow-Origin", "*");
-     // if (req.path.length > 1 && /\/$/.test(req.path)) {
-     //   var query = req.url.slice(req.path.length)
-     //   res.redirect(301, req.path.slice(0, -1) + query)
-     //       console.log("poopsie")
-     // } else {
-     //       console.log(req.path);
-     //       console.log( req.url.slice(req.path.length));
-      //      console.log("pee")
-      //  next()  
-//    });
-
-baitaserver.use(cors());
-baitaserver.get(':endpoint([\\w\\.-]*)', function (req, res)  {
-//baitaserver.get(':endpoint([\\/\\w\\.-]*)', function (req, res) {
-//1baitaserver.get('/', function (req, res) {
-     // Remove any trailing slash from base url
-
-    res.header("Access-Control-Allow-Origin", "*");
-
-    //var endpoint = req.header('Target-URL');
-        
-    //var endpoint = req.params.endpoint;
-      var endpoint = req.path.substring(1);
-    //endpoint = endpoint.substring(1);
-   //        console.log(req.params.endpoint);
-    console.log(endpoint);
-    axios.get(endpoint, {
+baitaserver.use((req, res, next) => {
+  if (req.path.slice(-1) === '/' && req.path.length > 1) {
+    const query = req.url.slice(req.path.length)
+    const safepath = req.path.slice(0, -1).replace(/\/+/g, '/')
+      console.log("poop");
+    res.redirect(301, safepath + query)
+      axios.get(safepath + query, {
   
     }).then(async response => {
 
@@ -43,8 +19,37 @@ baitaserver.get(':endpoint([\\w\\.-]*)', function (req, res)  {
            
     }).catch(async error => {
         res.json(await error)
-    })
+    });
+      
+  } else {
+      console.log("pee");
+    next()
+  }
 })
+
+
+//baitaserver.get(':endpoint([\\w\\.-]*)', function (req, res)  {
+     // Remove any trailing slash from base url
+
+    //res.header("Access-Control-Allow-Origin", "*");
+
+    //var endpoint = req.header('Target-URL');
+        
+    //var endpoint = req.params.endpoint;
+    //  var endpoint = req.path.substring(1);
+    //endpoint = endpoint.substring(1);
+   //        console.log(req.params.endpoint);
+   // console.log(endpoint);
+   // axios.get(endpoint, {
+  
+  //  }).then(async response => {
+
+    //    res.json(await response.data) 
+           
+   // }).catch(async error => {
+   //     res.json(await error)
+   // })
+//})
 
 
 baitaserver.listen(process.env.PORT || 3000, function(){
