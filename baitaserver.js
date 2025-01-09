@@ -7,10 +7,10 @@ baitaserver.use(cors());
 
 const yada = "https://www.wikiaves.com.br";
 
-baitaserver.post(yada, function (req, res) {
+baitaserver.get(yada, function (req, res) {
   var endpoint = req.header('Target-URL');
   console.log(endpoint);
-  return res.redirect(301, req.path.slice(0, -1) + req.url.slice(req.path.length));
+  return res.json(await response.data) ;//res.redirect(301, req.path.slice(0, -1) + req.url.slice(req.path.length));
   
 });
 
