@@ -16,15 +16,12 @@ function parseEnvList(env) {
   return env.split(',');
 }
 
-// Set up rate-limiting to avoid abuse of the public CORS Anywhere server.
-var checkRateLimit = import('./lib/rate-limit')(process.env.CORSANYWHERE_RATELIMIT);
 
 var cors_proxy = require('./lib/cors-anywhere');
 cors_proxy.createServer({
   originBlacklist: originBlacklist,
   originWhitelist: originWhitelist,
   requireHeader: ['origin', 'x-requested-with'],
-  checkRateLimit: checkRateLimit,
   removeHeaders: [
     'cookie',
     'cookie2',
