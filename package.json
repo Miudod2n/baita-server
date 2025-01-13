@@ -8,11 +8,9 @@
     "start": "node baitaserver.js"
   },
   "author": "Miu",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
-    "axios": "^1.7.9",
-    "cors": "^2.8.5",
-    "express": "^4.21.2",
-    "node-fetch": "^3.3.2"
+    "http-proxy": "1.11.1",
+    "proxy-from-env": "0.0.1"
   }
 }
